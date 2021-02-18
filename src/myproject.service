@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn instance to serve cat_vs_dog
+After=network.target
+
+[Service]
+User=username
+Group=www-data
+WorkingDirectory=/path/to/myproject
+Environment="PATH=/path/to/environment/bin"
+ExecStart=/path/to/environment/bin/gunicorn --workers 3 --bind unix:myproject.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
+

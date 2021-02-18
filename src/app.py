@@ -10,7 +10,7 @@ from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 
 
-model = load_model('CatDog.h5', compile=False)
+model = load_model('../CatDog.h5', compile=False)
 graph = tf.Graph()
 
 app = Flask(__name__)
@@ -31,7 +31,7 @@ def index():
         # Display a placeholder image
         uri = "/static/placeholder.png"
 
-    return render_template("index.html", image_uri=uri, language=language)
+    return render_template("index.html", image_uri=uri)
 
 def load_image(img_bytes: bytes, size: list =[200,200]) -> np.ndarray:
     img = Image.open(io.BytesIO(img_bytes))
